@@ -15,17 +15,13 @@
                 <executions>
                     <execution>
                         <id>verify</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>verify</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>integration-test</id>
-                        <phase>integration-test</phase>
                         <goals>
                             <goal>integration-test</goal>
+                            <goal>verify</goal>
                         </goals>
+                        <configuration>
+                            <argLine>${jacoco.agent.arg}</argLine>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
