@@ -22,10 +22,9 @@
         <maven.compiler.target>1.7</maven.compiler.target>
 
         <jacoco.out.path>${session.executionRootDirectory}/target</jacoco.out.path>
-        <jacoco.out.file>jacoco.exec</jacoco.out.file>
 
-        <sonar.jacoco.itReportPath>${env.WORKSPACE}/target/${jacoco.out.file}</sonar.jacoco.itReportPath>
-
+        <sonar.jacoco.itReportPath>${env.WORKSPACE}/target/jacoco-it.exec</sonar.jacoco.itReportPath>
+        <sonar.jacoco.reportPath>${env.WORKSPACE}/target/jacoco.exec</sonar.jacoco.reportPath>
     </properties>
 
     <dependencies>
@@ -50,7 +49,17 @@
                             <goal>prepare-agent</goal>
                         </goals>
                         <configuration>
-                            <destFile>${jacoco.out.path}/${jacoco.out.file}</destFile>
+                            <destFile>${jacoco.out.path}/jacoco.exec</destFile>
+                            <propertyName>jacoco.agent.arg</propertyName>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>prepare-agent-integration</id>
+                        <goals>
+                            <goal>prepare-agent-integration</goal>
+                        </goals>
+                        <configuration>
+                            <destFile>${jacoco.out.path}/jacoco-it.exec</destFile>
                             <propertyName>jacoco.agent.arg</propertyName>
                         </configuration>
                     </execution>
