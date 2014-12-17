@@ -24,7 +24,7 @@
         <jacoco.out.path>${session.executionRootDirectory}/target</jacoco.out.path>
         <jacoco.out.file>jacoco.exec</jacoco.out.file>
 
-        <sonar.jacoco.reportPath>${env.WORKSPACE}/target/${jacoco.out.file}</sonar.jacoco.reportPath>
+        <sonar.jacoco.itReportPath>${env.WORKSPACE}/target/${jacoco.out.file}</sonar.jacoco.itReportPath>
 
     </properties>
 
