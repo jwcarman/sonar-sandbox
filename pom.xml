@@ -23,6 +23,7 @@
 
         <jacoco.out.path>${session.executionRootDirectory}/target</jacoco.out.path>
 
+        <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
         <sonar.jacoco.itReportPath>${env.WORKSPACE}/target/jacoco-it.exec</sonar.jacoco.itReportPath>
         <sonar.jacoco.reportPath>${env.WORKSPACE}/target/jacoco.exec</sonar.jacoco.reportPath>
     </properties>
