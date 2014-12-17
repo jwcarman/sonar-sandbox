@@ -21,8 +21,8 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
 
-        <jacoco.plugin.version>0.7.2.201409121644</jacoco.plugin.version>
         <jacoco.out.path>${session.executionRootDirectory}/target</jacoco.out.path>
+        <jacoco.out.file>jacoco.exec</jacoco.out.file>
 
         <sonar.jacoco.itReportPath>${env.WORKSPACE}/target/${jacoco.out.file}</sonar.jacoco.itReportPath>
 
@@ -42,7 +42,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco.plugin.version}</version>
+                <version>0.6.3.201306030806</version>
                 <executions>
                     <execution>
                         <id>prepare-agent</id>
@@ -54,31 +54,22 @@
                             <propertyName>jacoco.agent.arg</propertyName>
                         </configuration>
                     </execution>
-
-                    <!--<execution>-->
-                        <!--<id>prepare-unit-test-agent</id>-->
-                        <!--<goals>-->
-                            <!--<goal>prepare-agent</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                    <!--<execution>-->
-                        <!--<id>generate-unit-test-report</id>-->
-                        <!--<goals>-->
-                            <!--<goal>report</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                    <!--<execution>-->
-                        <!--<id>prepare-integration-test-agent</id>-->
-                        <!--<goals>-->
-                            <!--<goal>prepare-agent-integration</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                    <!--<execution>-->
-                        <!--<id>generate-integration-test-report</id>-->
-                        <!--<goals>-->
-                            <!--<goal>report-integration</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.16</version>
+                <executions>
+                    <execution>
+                        <id>verify</id>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                        <configuration>
+                            <argLine>${jacoco.agent.arg}</argLine>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
